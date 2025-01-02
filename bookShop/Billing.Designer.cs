@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Billing));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -37,18 +40,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.ResetBtn = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.PriceTb = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.BooksData = new Guna.UI2.WinForms.Guna2DataGridView();
             this.DeleteBtn = new System.Windows.Forms.Button();
-            this.QtyTb = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.BcatCb = new System.Windows.Forms.ComboBox();
-            this.BauthTb = new System.Windows.Forms.TextBox();
-            this.CatCbSearchCb = new System.Windows.Forms.ComboBox();
+            this.BquantityTb = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,15 +53,23 @@
             this.BtitleTb = new System.Windows.Forms.TextBox();
             this.EditBtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.PriceTb = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.ClientnameTb = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Billdata = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BooksData)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Billdata)).BeginInit();
             this.SuspendLayout();
             // 
             // panel5
@@ -104,7 +108,7 @@
             // 
             this.button5.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.button5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(967, 342);
+            this.button5.Location = new System.Drawing.Point(1156, 735);
             this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(116, 38);
@@ -124,37 +128,6 @@
             this.ResetBtn.Text = "Reset";
             this.ResetBtn.UseVisualStyleBackColor = false;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label12.Location = new System.Drawing.Point(1333, 176);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(57, 23);
-            this.label12.TabIndex = 44;
-            this.label12.Text = "Price";
-            // 
-            // PriceTb
-            // 
-            this.PriceTb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PriceTb.Location = new System.Drawing.Point(1337, 214);
-            this.PriceTb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.PriceTb.Name = "PriceTb";
-            this.PriceTb.Size = new System.Drawing.Size(104, 30);
-            this.PriceTb.TabIndex = 43;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label11.Location = new System.Drawing.Point(1137, 174);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(81, 23);
-            this.label11.TabIndex = 42;
-            this.label11.Text = "Quatity";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -168,26 +141,26 @@
             // 
             // BooksData
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.BooksData.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BooksData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.BooksData.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BooksData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.BooksData.ColumnHeadersHeight = 25;
             this.BooksData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BooksData.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BooksData.DefaultCellStyle = dataGridViewCellStyle3;
             this.BooksData.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.BooksData.Location = new System.Drawing.Point(400, 465);
             this.BooksData.Margin = new System.Windows.Forms.Padding(4);
@@ -218,12 +191,13 @@
             this.BooksData.ThemeStyle.RowsStyle.Height = 22;
             this.BooksData.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.BooksData.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.BooksData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BooksData_CellContentClick);
             // 
             // DeleteBtn
             // 
             this.DeleteBtn.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.DeleteBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteBtn.Location = new System.Drawing.Point(1337, 403);
+            this.DeleteBtn.Location = new System.Drawing.Point(1323, 722);
             this.DeleteBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(116, 38);
@@ -231,74 +205,14 @@
             this.DeleteBtn.Text = "Delete";
             this.DeleteBtn.UseVisualStyleBackColor = false;
             // 
-            // QtyTb
+            // BquantityTb
             // 
-            this.QtyTb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.QtyTb.Location = new System.Drawing.Point(1141, 212);
-            this.QtyTb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.QtyTb.Name = "QtyTb";
-            this.QtyTb.Size = new System.Drawing.Size(104, 30);
-            this.QtyTb.TabIndex = 41;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label9.Location = new System.Drawing.Point(892, 172);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(116, 23);
-            this.label9.TabIndex = 40;
-            this.label9.Text = "Categorgy";
-            // 
-            // BcatCb
-            // 
-            this.BcatCb.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BcatCb.FormattingEnabled = true;
-            this.BcatCb.Items.AddRange(new object[] {
-            "Learning",
-            "Novel",
-            "Autobiography",
-            "Biography",
-            "Sci-Fi",
-            "Adventure",
-            "Action",
-            "Romance"});
-            this.BcatCb.Location = new System.Drawing.Point(896, 209);
-            this.BcatCb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BcatCb.Name = "BcatCb";
-            this.BcatCb.Size = new System.Drawing.Size(185, 31);
-            this.BcatCb.TabIndex = 39;
-            this.BcatCb.Text = "Select Category";
-            // 
-            // BauthTb
-            // 
-            this.BauthTb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BauthTb.Location = new System.Drawing.Point(595, 212);
-            this.BauthTb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BauthTb.Name = "BauthTb";
-            this.BauthTb.Size = new System.Drawing.Size(89, 30);
-            this.BauthTb.TabIndex = 37;
-            // 
-            // CatCbSearchCb
-            // 
-            this.CatCbSearchCb.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CatCbSearchCb.FormattingEnabled = true;
-            this.CatCbSearchCb.Items.AddRange(new object[] {
-            "Learning",
-            "Novel",
-            "Autobiography",
-            "Biography",
-            "Sci-Fi",
-            "Adventure",
-            "Action",
-            "Romance"});
-            this.CatCbSearchCb.Location = new System.Drawing.Point(760, 342);
-            this.CatCbSearchCb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.CatCbSearchCb.Name = "CatCbSearchCb";
-            this.CatCbSearchCb.Size = new System.Drawing.Size(185, 31);
-            this.CatCbSearchCb.TabIndex = 49;
-            this.CatCbSearchCb.Text = "Filter Category";
+            this.BquantityTb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BquantityTb.Location = new System.Drawing.Point(595, 212);
+            this.BquantityTb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BquantityTb.Name = "BquantityTb";
+            this.BquantityTb.Size = new System.Drawing.Size(89, 30);
+            this.BquantityTb.TabIndex = 37;
             // 
             // panel1
             // 
@@ -344,6 +258,7 @@
             this.SaveBtn.TabIndex = 35;
             this.SaveBtn.Text = "Add";
             this.SaveBtn.UseVisualStyleBackColor = false;
+            this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
             // label2
             // 
@@ -369,7 +284,7 @@
             // 
             this.EditBtn.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.EditBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EditBtn.Location = new System.Drawing.Point(1029, 272);
+            this.EditBtn.Location = new System.Drawing.Point(1218, 665);
             this.EditBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.EditBtn.Name = "EditBtn";
             this.EditBtn.Size = new System.Drawing.Size(116, 38);
@@ -384,18 +299,18 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label3.Location = new System.Drawing.Point(591, 260);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 23);
+            this.label3.Size = new System.Drawing.Size(57, 23);
             this.label3.TabIndex = 54;
-            this.label3.Text = "Quantity";
+            this.label3.Text = "Price";
             // 
-            // textBox1
+            // PriceTb
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(595, 297);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(89, 30);
-            this.textBox1.TabIndex = 53;
+            this.PriceTb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PriceTb.Location = new System.Drawing.Point(595, 297);
+            this.PriceTb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PriceTb.Name = "PriceTb";
+            this.PriceTb.Size = new System.Drawing.Size(89, 30);
+            this.PriceTb.TabIndex = 53;
             // 
             // label4
             // 
@@ -408,14 +323,14 @@
             this.label4.TabIndex = 52;
             this.label4.Text = "Client name";
             // 
-            // textBox2
+            // ClientnameTb
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(400, 299);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(168, 30);
-            this.textBox2.TabIndex = 51;
+            this.ClientnameTb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClientnameTb.Location = new System.Drawing.Point(400, 299);
+            this.ClientnameTb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ClientnameTb.Name = "ClientnameTb";
+            this.ClientnameTb.Size = new System.Drawing.Size(168, 30);
+            this.ClientnameTb.TabIndex = 51;
             // 
             // label6
             // 
@@ -424,9 +339,114 @@
             this.label6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label6.Location = new System.Drawing.Point(559, 427);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 23);
+            this.label6.Size = new System.Drawing.Size(94, 23);
             this.label6.TabIndex = 55;
-            this.label6.Text = "Quantity";
+            this.label6.Text = "Books list";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label7.Location = new System.Drawing.Point(1120, 96);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(106, 23);
+            this.label7.TabIndex = 57;
+            this.label7.Text = "Books bills";
+            // 
+            // Billdata
+            // 
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.Billdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Billdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.Billdata.ColumnHeadersHeight = 25;
+            this.Billdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.Billdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Billdata.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Billdata.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.Billdata.Location = new System.Drawing.Point(961, 134);
+            this.Billdata.Margin = new System.Windows.Forms.Padding(4);
+            this.Billdata.Name = "Billdata";
+            this.Billdata.ReadOnly = true;
+            this.Billdata.RowHeadersVisible = false;
+            this.Billdata.RowHeadersWidth = 51;
+            this.Billdata.Size = new System.Drawing.Size(437, 316);
+            this.Billdata.TabIndex = 56;
+            this.Billdata.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.Billdata.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.Billdata.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.Billdata.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.Billdata.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.Billdata.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.Billdata.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.Billdata.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.Billdata.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.Billdata.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Billdata.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.Billdata.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.Billdata.ThemeStyle.HeaderStyle.Height = 25;
+            this.Billdata.ThemeStyle.ReadOnly = true;
+            this.Billdata.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.Billdata.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.Billdata.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Billdata.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.Billdata.ThemeStyle.RowsStyle.Height = 22;
+            this.Billdata.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.Billdata.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ID";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Books";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Price";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Quatity";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Total";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // Billing
             // 
@@ -434,24 +454,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1479, 874);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.Billdata);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.PriceTb);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.ClientnameTb);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.ResetBtn);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.PriceTb);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.BooksData);
             this.Controls.Add(this.DeleteBtn);
-            this.Controls.Add(this.QtyTb);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.BcatCb);
-            this.Controls.Add(this.BauthTb);
-            this.Controls.Add(this.CatCbSearchCb);
+            this.Controls.Add(this.BquantityTb);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.label2);
@@ -468,6 +483,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Billdata)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -479,18 +495,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button ResetBtn;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox PriceTb;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label8;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Guna.UI2.WinForms.Guna2DataGridView BooksData;
         private System.Windows.Forms.Button DeleteBtn;
-        private System.Windows.Forms.TextBox QtyTb;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox BcatCb;
-        private System.Windows.Forms.TextBox BauthTb;
-        private System.Windows.Forms.ComboBox CatCbSearchCb;
+        private System.Windows.Forms.TextBox BquantityTb;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
@@ -499,9 +508,16 @@
         private System.Windows.Forms.TextBox BtitleTb;
         private System.Windows.Forms.Button EditBtn;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox PriceTb;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox ClientnameTb;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private Guna.UI2.WinForms.Guna2DataGridView Billdata;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }
