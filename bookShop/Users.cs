@@ -149,5 +149,45 @@ namespace bookShop
                 }
             }
         }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+       
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            Login obj = new Login();
+            obj.Show();
+            this.Hide();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Login obj = new Login();
+            obj.Show();
+            this.Hide();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            Dashboard obj = new Dashboard();
+            obj.Show();
+            this.Hide();
+        }
+
+        private void Users_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+            Books obj = new Books();
+            obj.Show();
+            this.Hide();
+        }
     }
 }

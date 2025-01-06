@@ -38,12 +38,10 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
             this.ResetBtn = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.BooksData = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.DeleteBtn = new System.Windows.Forms.Button();
             this.BquantityTb = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -51,7 +49,6 @@
             this.SaveBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.BtitleTb = new System.Windows.Forms.TextBox();
-            this.EditBtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.PriceTb = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -64,12 +61,20 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditBtn = new System.Windows.Forms.Button();
+            this.totalLabel = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.username = new System.Windows.Forms.Label();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BooksData)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Billdata)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // panel5
@@ -92,6 +97,7 @@
             this.pictureBox2.Size = new System.Drawing.Size(83, 76);
             this.pictureBox2.TabIndex = 23;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // label5
             // 
@@ -103,18 +109,7 @@
             this.label5.Size = new System.Drawing.Size(106, 34);
             this.label5.TabIndex = 22;
             this.label5.Text = "Logout";
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.button5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(1156, 735);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(116, 38);
-            this.button5.TabIndex = 50;
-            this.button5.Text = "Refresh";
-            this.button5.UseVisualStyleBackColor = false;
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // ResetBtn
             // 
@@ -127,6 +122,7 @@
             this.ResetBtn.TabIndex = 47;
             this.ResetBtn.Text = "Reset";
             this.ResetBtn.UseVisualStyleBackColor = false;
+            this.ResetBtn.Click += new System.EventHandler(this.ResetBtn_Click);
             // 
             // label8
             // 
@@ -168,7 +164,7 @@
             this.BooksData.ReadOnly = true;
             this.BooksData.RowHeadersVisible = false;
             this.BooksData.RowHeadersWidth = 51;
-            this.BooksData.Size = new System.Drawing.Size(437, 357);
+            this.BooksData.Size = new System.Drawing.Size(534, 357);
             this.BooksData.TabIndex = 48;
             this.BooksData.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.BooksData.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -192,18 +188,6 @@
             this.BooksData.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.BooksData.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.BooksData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BooksData_CellContentClick);
-            // 
-            // DeleteBtn
-            // 
-            this.DeleteBtn.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.DeleteBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteBtn.Location = new System.Drawing.Point(1323, 722);
-            this.DeleteBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.DeleteBtn.Name = "DeleteBtn";
-            this.DeleteBtn.Size = new System.Drawing.Size(116, 38);
-            this.DeleteBtn.TabIndex = 45;
-            this.DeleteBtn.Text = "Delete";
-            this.DeleteBtn.UseVisualStyleBackColor = false;
             // 
             // BquantityTb
             // 
@@ -273,24 +257,13 @@
             // 
             // BtitleTb
             // 
+            this.BtitleTb.Enabled = false;
             this.BtitleTb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtitleTb.Location = new System.Drawing.Point(400, 214);
             this.BtitleTb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtitleTb.Name = "BtitleTb";
             this.BtitleTb.Size = new System.Drawing.Size(168, 30);
             this.BtitleTb.TabIndex = 33;
-            // 
-            // EditBtn
-            // 
-            this.EditBtn.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.EditBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EditBtn.Location = new System.Drawing.Point(1218, 665);
-            this.EditBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.EditBtn.Name = "EditBtn";
-            this.EditBtn.Size = new System.Drawing.Size(116, 38);
-            this.EditBtn.TabIndex = 46;
-            this.EditBtn.Text = "Edit";
-            this.EditBtn.UseVisualStyleBackColor = false;
             // 
             // label3
             // 
@@ -305,6 +278,7 @@
             // 
             // PriceTb
             // 
+            this.PriceTb.Enabled = false;
             this.PriceTb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PriceTb.Location = new System.Drawing.Point(595, 297);
             this.PriceTb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -348,7 +322,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label7.Location = new System.Drawing.Point(1120, 96);
+            this.label7.Location = new System.Drawing.Point(1164, 427);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(106, 23);
             this.label7.TabIndex = 57;
@@ -383,13 +357,13 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.Billdata.DefaultCellStyle = dataGridViewCellStyle6;
             this.Billdata.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.Billdata.Location = new System.Drawing.Point(961, 134);
+            this.Billdata.Location = new System.Drawing.Point(969, 465);
             this.Billdata.Margin = new System.Windows.Forms.Padding(4);
             this.Billdata.Name = "Billdata";
             this.Billdata.ReadOnly = true;
             this.Billdata.RowHeadersVisible = false;
             this.Billdata.RowHeadersWidth = 51;
-            this.Billdata.Size = new System.Drawing.Size(437, 316);
+            this.Billdata.Size = new System.Drawing.Size(473, 357);
             this.Billdata.TabIndex = 56;
             this.Billdata.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.Billdata.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -422,7 +396,7 @@
             // 
             // Column2
             // 
-            this.Column2.HeaderText = "Books";
+            this.Column2.HeaderText = "Product";
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
@@ -448,12 +422,83 @@
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
+            // EditBtn
+            // 
+            this.EditBtn.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.EditBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditBtn.Location = new System.Drawing.Point(1326, 352);
+            this.EditBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.EditBtn.Name = "EditBtn";
+            this.EditBtn.Size = new System.Drawing.Size(116, 38);
+            this.EditBtn.TabIndex = 58;
+            this.EditBtn.Text = "Print";
+            this.EditBtn.UseVisualStyleBackColor = false;
+            this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
+            // 
+            // totalLabel
+            // 
+            this.totalLabel.AutoSize = true;
+            this.totalLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.totalLabel.Location = new System.Drawing.Point(1322, 318);
+            this.totalLabel.Name = "totalLabel";
+            this.totalLabel.Size = new System.Drawing.Size(65, 27);
+            this.totalLabel.TabIndex = 59;
+            this.totalLabel.Text = "Total";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label9.Location = new System.Drawing.Point(1445, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(22, 23);
+            this.label9.TabIndex = 60;
+            this.label9.Text = "X";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.Document = this.printDocument1;
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(400, 22);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(83, 76);
+            this.pictureBox3.TabIndex = 61;
+            this.pictureBox3.TabStop = false;
+            // 
+            // username
+            // 
+            this.username.AutoSize = true;
+            this.username.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.username.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.username.Location = new System.Drawing.Point(503, 43);
+            this.username.Name = "username";
+            this.username.Size = new System.Drawing.Size(65, 27);
+            this.username.TabIndex = 62;
+            this.username.Text = "Total";
+            // 
             // Billing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1479, 874);
+            this.Controls.Add(this.username);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.totalLabel);
+            this.Controls.Add(this.EditBtn);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.Billdata);
             this.Controls.Add(this.label6);
@@ -461,21 +506,19 @@
             this.Controls.Add(this.PriceTb);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.ClientnameTb);
-            this.Controls.Add(this.button5);
             this.Controls.Add(this.ResetBtn);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.BooksData);
-            this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.BquantityTb);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.BtitleTb);
-            this.Controls.Add(this.EditBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Billing";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Billing";
+            this.Load += new System.EventHandler(this.Billing_Load);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -484,6 +527,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Billdata)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -493,12 +537,10 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button ResetBtn;
         private System.Windows.Forms.Label label8;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Guna.UI2.WinForms.Guna2DataGridView BooksData;
-        private System.Windows.Forms.Button DeleteBtn;
         private System.Windows.Forms.TextBox BquantityTb;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -506,7 +548,6 @@
         private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox BtitleTb;
-        private System.Windows.Forms.Button EditBtn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox PriceTb;
         private System.Windows.Forms.Label label4;
@@ -514,10 +555,17 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private Guna.UI2.WinForms.Guna2DataGridView Billdata;
+        private System.Windows.Forms.Button EditBtn;
+        private System.Windows.Forms.Label totalLabel;
+        private System.Windows.Forms.Label label9;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label username;
     }
 }
